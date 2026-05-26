@@ -19,8 +19,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             DAST1Theme {
-      
-                }
+
+               
             }
         }
     }
