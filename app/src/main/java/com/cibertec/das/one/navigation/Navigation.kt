@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.cibertec.das.one.home.HomeScreen
 import com.cibertec.das.one.login.LoginScreen
 import com.cibertec.das.one.routes.Routes
 import com.cibertec.das.one.splash.SplashScreen
@@ -45,6 +46,10 @@ fun Navigation() {
                 LoginScreen(navController)
 
             }
+            composable(Routes.HOME){
+                HomeScreen(navController)
+            }
+
         }
     }
 }
