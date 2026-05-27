@@ -26,13 +26,24 @@ import androidx.navigation.NavController
 import kotlinx.coroutines.delay
 import com.cibertec.das.one.R
 import com.cibertec.das.one.routes.Routes
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.sp
 
 @Composable
 fun SplashScreen(navController:NavController){
     var startAnimation by remember {
         mutableStateOf(false)
     }
-
+    val luckiestguyRegular = FontFamily(
+        Font(R.font.luckiestguy_regular)
+    )
     val scale by animateFloatAsState(
         targetValue = if (startAnimation) 1.2f else 0.8f,
         animationSpec = tween(1500),
@@ -57,8 +68,8 @@ fun SplashScreen(navController:NavController){
 
     Box(
 
-        modifier = Modifier.fillMaxSize(),
-
+        modifier = Modifier.fillMaxSize()
+            .background(Color(0xFFF5FFE0)),
         contentAlignment = Alignment.Center
 
     ) {
@@ -80,7 +91,23 @@ fun SplashScreen(navController:NavController){
                     .scale(scale)
 
             )
-
+            Spacer(modifier = Modifier.height(32.dp))
+            Text(
+                text = "FOOD TRAVEL APP",
+                modifier = Modifier.fillMaxWidth(),
+                style = TextStyle(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            Color(0xFF51A753),
+                            Color(0xFF84BE25)
+                        )
+                    ),
+                    fontSize = 50.sp,
+                    fontFamily = luckiestguyRegular,
+                    textAlign = TextAlign.Center
+                )
+            )
+            Spacer(modifier = Modifier.height(24.dp))
             ShowSpinner()
 
         }
