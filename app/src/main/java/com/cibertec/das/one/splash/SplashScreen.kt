@@ -27,8 +27,18 @@ import kotlinx.coroutines.delay
 import com.cibertec.das.one.R
 import com.cibertec.das.one.routes.Routes
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.sp
+
 @Composable
-fun SplashScreen(navController:NavController){
+fun SplashScreen(navController: NavController) {
     var startAnimation by remember {
         mutableStateOf(false)
     }
@@ -39,54 +49,60 @@ fun SplashScreen(navController:NavController){
         label = "scaleAnimation"
     )
 
+    val luckiestguyRegular = FontFamily(
+        Font(R.font.luckiestguy_regular)
+    )
+
     LaunchedEffect(true) {
-
         startAnimation = true
-
         delay(2500)
-
         navController.navigate(Routes.LOGIN) {
-
             popUpTo(Routes.SPLASH) {
                 inclusive = true
             }
-
         }
-
     }
 
     Box(
-
-        modifier = Modifier.fillMaxSize(),
-
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color(0xFFF5FFE0)),
         contentAlignment = Alignment.Center
-
     ) {
-
         Column(
-
             horizontalAlignment = Alignment.CenterHorizontally
-
         ) {
-
             Image(
-
-                painter = painterResource(id = R.drawable.foodtravel ),
-
+                painter = painterResource(id = R.drawable.foodtravel),
                 contentDescription = "Logo",
-
                 modifier = Modifier
                     .size(180.dp)
                     .scale(scale)
-
             )
 
+            Spacer(modifier = Modifier.height(32.dp))
+
+            Text(
+                text = "FOOD TRAVEL APP",
+                modifier = Modifier.fillMaxWidth(),
+                style = TextStyle(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            Color(0xFF51A753),
+                            Color(0xFF84BE25)
+                        )
+                    ),
+                    fontSize = 50.sp,
+                    fontFamily = luckiestguyRegular,
+                    textAlign = TextAlign.Center
+                )
+            )
+
+            Spacer(modifier = Modifier.height(24.dp))
+
             ShowSpinner()
-
         }
-
     }
-
 }
 
 
