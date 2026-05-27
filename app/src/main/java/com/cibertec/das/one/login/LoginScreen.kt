@@ -1,6 +1,7 @@
 package com.cibertec.das.one.login
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -36,6 +37,17 @@ import androidx.navigation.NavController
 import com.cibertec.das.one.R
 import kotlinx.coroutines.launch
 import java.util.Objects
+
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.OutlinedTextFieldDefaults
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.style.TextAlign
+val luckiestguyRegular = FontFamily(
+    Font(R.font.luckiestguy_regular)
+)
 
 @Composable
 fun LoginScreen(navController: NavController) {
@@ -77,6 +89,7 @@ fun LoginScreen(navController: NavController) {
         Column (
             modifier = Modifier
                 .fillMaxSize()
+                .background(Color(0xFFF5FFE0))
                 .padding(paddingValues)
                 .padding(horizontal = 24.dp),
 
@@ -87,7 +100,22 @@ fun LoginScreen(navController: NavController) {
             Image(
                 painter = painterResource(R.drawable.foodtravel),
                 contentDescription = "Logo",
-                modifier = Modifier.size(140.dp)
+                modifier = Modifier.size(190.dp)
+            )
+            Text(
+                text = "FOOD TRAVEL APP",
+                modifier = Modifier.fillMaxWidth(),
+                style = TextStyle(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(
+                            Color(0xFF51A753),
+                            Color(0xFF84BE25)
+                        )
+                    ),
+                    fontSize = 45.sp,
+                    fontFamily = luckiestguyRegular,
+                    textAlign = TextAlign.Center
+                )
             )
 
             Spacer(modifier = Modifier.height(32.dp))
@@ -137,8 +165,12 @@ fun LoginScreen(navController: NavController) {
                 )
 
             ) {
+                Text(
+                    "INGRESAR",
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold
+                )
 
-                Text("INGRESAR")
             }
         }
     }
@@ -146,11 +178,15 @@ fun LoginScreen(navController: NavController) {
 @Composable
 fun FieldEmail(    email: String,
                    onEmailChange: (String) -> Unit){
+
     Text(
-        text = "Correo",
+        text = "Tu Correo",
         modifier = Modifier.fillMaxWidth(),
-        fontWeight = FontWeight.Bold,
-        fontSize = 14.sp
+        style = TextStyle(
+            fontWeight = FontWeight.Bold,
+            fontSize = 14.sp,
+            color = Color(0xFF261800)
+        )
     )
 
     Spacer(modifier = Modifier.height(6.dp))
@@ -169,7 +205,14 @@ fun FieldEmail(    email: String,
             Text("correo@ejemplo.com")
         },
 
-        singleLine = true
+        singleLine = true,
+        shape = RoundedCornerShape(16.dp),
+        colors = OutlinedTextFieldDefaults.colors(
+            unfocusedContainerColor = Color.White,
+            focusedContainerColor = Color.White,
+            focusedTextColor = Color.Black,
+            unfocusedTextColor = Color.Black
+    )
     )
 }
 @Composable
@@ -199,8 +242,14 @@ fun FieldPassword(password: String,
 
         visualTransformation = PasswordVisualTransformation(),
 
-        singleLine = true
-    )
+        singleLine = true,
+        shape = RoundedCornerShape(16.dp),
+        colors = OutlinedTextFieldDefaults.colors(
+            unfocusedContainerColor = Color.White,
+            focusedContainerColor = Color.White,
+            focusedTextColor = Color.Black,
+            unfocusedTextColor = Color.Black
+    ) )
 }
 
 fun validateLogin(
