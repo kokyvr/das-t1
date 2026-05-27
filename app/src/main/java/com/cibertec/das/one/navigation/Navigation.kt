@@ -10,7 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.cibertec.das.one.detail.DetailScreen
+import com.cibertec.das.one.detailpackage.DetailScreen
 import com.cibertec.das.one.home.HomeScreen
 import com.cibertec.das.one.login.LoginScreen
 import com.cibertec.das.one.routes.Routes
